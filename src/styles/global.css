@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-color: #fcfcfc;
+    --text-color: #000000;
+    --footer-text-color: #000000;
+    --link-color: #003b6e;
+    --motto-text-color: #999;
+    --border-color: gray;
+    --image-shadow-color: rgba(0, 0, 0, 0.15);
+  }
+
+  [data-theme="dark"] {
+    --bg-color: #031116;
+    --text-color: #ffffff;
+    --footer-text-color: #ffffff;
+    --link-color: #57ace7;
+    --motto-text-color: #c9d0d4;
+    --border-color: gray;
+    --image-shadow-color: rgba(59, 130, 246, 0.4);
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-[--bg-color] text-[--text-color];
+    font-family: 'Noto Serif SC', "Times New Roman", "STZhongsong", serif;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+}

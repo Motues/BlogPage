@@ -1,0 +1,22 @@
+---
+import { profileConfig } from "../config";
+import { url } from "@utils/url-utils";
+
+let introPage : string;
+
+if (profileConfig.introPage) {
+    introPage = profileConfig.introPage;
+} else {
+    introPage = import.meta.env.BASE_URL;
+}
+---
+
+<div class="fixed bottom-5 left-1/2 transform -translate-x-1/2 text-center text-sm z-10 text-[--footer-text-color]">
+    <div class="text-inherit">
+        Made with ❤️ by <a target="_self" href={introPage} class="relative inline-block no-underline hover:text-[--link-color] transition-colors duration-300">{profileConfig.name}</a>
+        <br>
+        Powered by <a target="_blank" href="https://astro.build" class="relative inline-block no-underline hover:text-[--link-color] transition-colors duration-300">Astro</a>
+        <br>
+        <a target="_blank" href="https://beian.miit.gov.cn/" target="_blank" class="relative inline-block no-underline hover:text-[--link-color] transition-colors duration-300">皖ICP备2025091754号-1</a>
+    </div>
+</div>
