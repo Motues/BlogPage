@@ -15,7 +15,7 @@ export type ProfileConfig = {
     avatar: string;
     name: string;
     description: string;
-    introPage?: string;
+    indexPage?: string;
     links: {
         name: string;
         url: string;

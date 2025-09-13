@@ -1,0 +1,182 @@
+---
+interface Props {
+  class: string
+}
+const className = Astro.props.class
+---
+<div data-pagefind-body class=`markdown-content ${className}`>
+    <slot/>
+</div>
+
+<style is:global>
+.markdown-content {
+  line-height: 1.75;
+}
+
+.markdown-content h1 {
+  padding: 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 2rem 0 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.markdown-content h2 {
+  padding: 0.4rem 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 1.8rem 0 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.markdown-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.8rem;
+}
+
+.markdown-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.2rem 0 0.6rem;
+}
+
+.markdown-content h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+
+.markdown-content h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+
+.markdown-content p {
+  margin: 0.8rem 0;
+  text-align: justify;
+}
+
+.markdown-content a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-color: var(--link-color);
+  transition: color 0.2s ease;
+}
+
+.markdown-content a:hover {
+  opacity: 0.8;
+}
+
+.markdown-content strong {
+  font-weight: 700;
+}
+
+.markdown-content em {
+  font-style: italic;
+}
+
+.markdown-content ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.markdown-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  list-style-type: decimal;
+}
+
+.markdown-content li {
+  margin: 0.3rem 0;
+}
+
+.markdown-content li > ul,
+.markdown-content li > ol {
+  margin: 0;
+}
+
+.markdown-content blockquote {
+  margin: 1.5rem 0;
+  padding: 0.1rem 1.2rem;
+  border-left: 4px solid var(--border-color);
+  background-color: rgba(0, 0, 0, 0.03);
+  color: #666;
+}
+
+[data-theme="dark"] .markdown-content blockquote {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #aaa;
+}
+
+.markdown-content code {
+  padding: 0.2rem 0.4rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+[data-theme="dark"] .markdown-content code {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.markdown-content pre {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .markdown-content pre {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.markdown-content pre code {
+  padding: 0;
+  background: none;
+  font-size: 0.9rem;
+}
+
+.markdown-content hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
+.markdown-content table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-content th,
+.markdown-content td {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.markdown-content th {
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .markdown-content th {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.markdown-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px var(--image-shadow-color);
+}
+</style>

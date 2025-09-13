@@ -1,24 +1,66 @@
 ---
 import "@styles/global.css"
+import { profileConfig, siteConfig } from "@/config"
+
+const indexPage = profileConfig.indexPage
 ---
 
 <!-- header -->
-<div class="flex justify-between items-center p-4">
+<div class="flex justify-between items-center py-4 max-w-[min(1024px,95%)] mx-auto">
     <!-- logo -->
     <div>
-        <a href="/" class="text-xl font-bold">Motues</a>
+        <a href="/" >
+            <span class="text-2xl font-bold hover:opacity-60 transition-opacity">{ siteConfig.title }</span>
+        </a>
     </div>
     
     <!-- nav_bar -->
     <div>
-        <div class="hidden md:flex space-x-0">
-            <a href="https://motues.top" target="_blank" class="hover:bg-[#eceef2] rounded-lg px-3 py-2 hover:text-current">主页</a>
-            <a href="/archives" target="_blank" class="hover:bg-[#eceef2] rounded-lg px-3 py-2 hover:text-current">归档</a>
-            <a href="/message" target="_blank" class="hover:bg-[#eceef2] rounded-lg px-3 py-2 hover:text-current">留言</a>
-            <a href="/about" target="_blank" class="hover:bg-[#eceef2] rounded-lg px-3 py-2 hover:text-current">关于</a>
-            <a href="/links" target="_blank" class="hover:bg-[#eceef2] rounded-lg px-3 py-2 hover:text-current">友链</a>
-            <a href="/rss.xml" target="_blank" class="hover:bg-[#eceef2] rounded-lg px-3 py-2 hover:text-current">RSS</a>
+        <div class="hidden md:flex space-x-0 text-lg font-bold">
+            <a href="/archives" class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">归档</a>
+            <!-- <a href="/message" target="_blank" class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">留言</a> -->
+            <a href="/about" class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">关于</a>
+            <!-- <a href="/links" target="_blank" class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">友链</a> -->
+            <!-- <a href="/rss.xml" target="_blank" class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">RSS</a> -->
+            <a href={ indexPage } target="_blank" class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">主页</a>
         </div>
         <!-- 移动端菜单按钮可以在这里添加 -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-2xl focus:outline-none">
+                ☰
+            </button>
+        </div>
     </div>
 </div>
+
+<!-- 移动端菜单 -->
+<div id="mobile-menu" class="md:hidden hidden fixed top-16 left-0 w-full bg-white shadow-lg z-50">
+    <div class="flex flex-col py-2">
+        <a href="https://motues.top" target="_blank" class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">主页</a>
+        <a href="/archives" target="_blank" class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">归档</a>
+        <!-- <a href="/message" target="_blank" class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">留言</a> -->
+        <a href="/about" target="_blank" class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">关于</a>
+        <!-- <a href="/links" target="_blank" class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">友链</a> -->
+        <a href="/rss.xml" target="_blank" class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">RSS</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // 点击菜单外部区域关闭菜单
+            document.addEventListener('click', (event) => {
+                if (!menuButton.contains(event.target as Node) && !mobileMenu.contains(event.target as Node)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
+    });
+</script>

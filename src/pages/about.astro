@@ -1,0 +1,28 @@
+---
+import MainPageLayout from '@layouts/MainPageLayout.astro'
+import Markdown from '@components/misc/Markdown.astro'
+
+import { siteConfig } from '@/config'
+
+import { getEntry, render } from 'astro:content'
+
+const aboutPost = await getEntry('spec', 'about');
+
+if (!aboutPost) {
+    throw new Error('No about post found');
+}
+const { Content } = await render(aboutPost);
+
+const pageTitle = "关于 - " + siteConfig.title;
+---
+<MainPageLayout title={pageTitle}>
+    <div class="mx-auto w-full max-w-[min(776px,90%)] py-8">
+        <div class="mb-8 text-center">
+            <h1 class="font-bold text-3xl mb-2">关于我</h1>
+            <p class="font-bold text-gray-600">Like River!</p>
+        </div>
+        <Markdown class="mb-6 markdown-content onload-animation">
+            <Content />
+        </Markdown>
+    </div>
+</MainPageLayout>

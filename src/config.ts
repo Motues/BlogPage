@@ -4,12 +4,12 @@ import type {
 } from "./types/config"
 
 export const siteConfig: SiteConfig = {
-    title: "Motues",
+    title: "Motues's Blog",
     subTitle: "记录生活",
 
     cover: {
         enabled: true,
-        title: "Motues",
+        title: "欢迎来到小M的一方天地",
         subTitle: "记录生活"
     },
 
@@ -20,7 +20,7 @@ export const profileConfig: ProfileConfig = {
     avatar: "assets/Motues.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
     name: "Motues",
     description: "Like River!",
-    introPage: "https://motues.top",
+    indexPage: "https://motues.top",
     links: [
         // Visit https://icones.js.org/ for icon codes
         // You will need to install the corresponding icon set if it's not already included
