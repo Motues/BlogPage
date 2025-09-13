@@ -9,8 +9,8 @@ export const siteConfig: SiteConfig = {
 
     cover: {
         enabled: true,
-        title: "欢迎来到小M的一方天地",
-        subTitle: "记录生活"
+        title: "欢迎来到小M的安乐居",
+        subTitle: "记录生活点点滴滴"
     },
 
     favicon: "/favicon/favicon.ico" // Path of the favicon, relative to the /public directory
