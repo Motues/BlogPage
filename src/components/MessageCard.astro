@@ -2,15 +2,6 @@
 import { formatDateToChinese } from "@utils/url-utils";
 
 const { messages } = Astro.props;
-
-// 计算字符串中换行符的数量
-function countLineBreaks(text: string) {
-  if (!text) return 0;
-  // 匹配所有类型的换行符
-  const lineBreaks = text.match(/(\r\n|\n|\r)/g);
-  return lineBreaks ? lineBreaks.length : 0;
-}
-
 ---
 
 <div class="space-y-4">

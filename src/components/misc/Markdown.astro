@@ -59,14 +59,34 @@ const className = Astro.props.class
 }
 
 .markdown-content a {
-  color: var(--link-color);
-  text-decoration: underline;
-  text-decoration-color: var(--link-color);
-  transition: color 0.2s ease;
+  color: inherit;
+  /* transition: color 0.3s ease; */
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
 }
-
+    
+.markdown-content a::before {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  border-bottom-style: dotted;
+  border-bottom-width: 2px;
+  /* background: currentColor; */
+  transition: transform 0.3s ease;
+  transform-origin: right;
+  transform: scaleX(1);
+}
+    
 .markdown-content a:hover {
-  opacity: 0.8;
+  color: var(--link-color);
+}
+    
+.markdown-content a:hover::before {
+  transform-origin: right;
+  transform: scaleX(0);
 }
 
 .markdown-content strong {

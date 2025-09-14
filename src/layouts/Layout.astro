@@ -14,6 +14,7 @@ const { title } = Astro.props;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="alternate" type="application/rss+xml" title={siteConfig.title} href={new URL("rss.xml", Astro.site)} >
     <link rel="icon" href={siteConfig.favicon} type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
     <title>{title}</title>

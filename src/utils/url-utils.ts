@@ -5,6 +5,7 @@
  * @returns 相对于src目录的路径
  */
 export function blogCoverUrl(contentPath: string, blogName: string): string {
+
     if (!contentPath) return '';
     
     // 处理相对路径 ./ 开头的情况
@@ -15,8 +16,11 @@ export function blogCoverUrl(contentPath: string, blogName: string): string {
     // 移除可能的前导斜杠
     const normalizedPath = contentPath.startsWith('/') ? contentPath.slice(1) : contentPath;
     
+    // 提取 blogName 中的文件夹名称（例如从 "intro/index.md" 提取 "intro"）
+    const blogFolder = blogName.split('/')[0];
+    
     // 构造相对于src目录的路径，包含博客名称文件夹
-    return `content/blog/${blogName}/${normalizedPath}`;
+    return `content/blog/${blogFolder}/${normalizedPath}`;
 }
 
 /**
