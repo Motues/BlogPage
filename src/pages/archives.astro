@@ -3,14 +3,13 @@ import MainPageLayout from '@layouts/MainPageLayout.astro'
 import Markdown from '@components/misc/Markdown.astro'
 
 import { siteConfig } from '@/config'
+import { formatDateToChinese } from '@utils/url-utils'
+import { getBlogEntrySort } from '@utils/content-utils'
+
 import { getCollection } from 'astro:content'
 
 // 获取所有博客文章并按发布日期降序排序
-const allBlogPosts = (await getCollection('blog', ({ data }) => {
-        return import.meta.env.PROD ? data.draft !== true : true
-    })).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const allBlogPosts = await getBlogEntrySort();
 
 
 // 按年份分组文章
@@ -40,8 +39,8 @@ const pageTitle = "归档 - " + siteConfig.title;
                     <ul class="space-y-2">
                         {postsByYear[Number(year)].map(post => (
                             <li class="flex items-center">
-                                <span class="text-lg text-gray-500 mr-3 min-w-[80px]">
-                                    {post.data.pubDate.toLocaleDateString('zh-CN')}
+                                <span class="text-lg text-gray-500 mr-3 min-w-[150px]">
+                                    {formatDateToChinese(post.data.pubDate)}
                                 </span>
                                 <a href={`/blog/${post.id}`} class="text-lg font-bold hover:text-blue-600 transition-colors">
                                     {post.data.title}

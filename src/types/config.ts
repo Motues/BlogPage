@@ -9,6 +9,8 @@ export type SiteConfig = {
     };
 
     favicon: string;
+
+    pageSize: number;
 }
 
 export type ProfileConfig = {

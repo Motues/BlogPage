@@ -1,0 +1,29 @@
+---
+import MainPageLayout from '@layouts/MainPageLayout.astro';
+import Cover from '@components/Cover.astro';
+import PostPage from '@components/PostPage.astro';
+import Navi from '@components/control/Navi.astro';
+
+import { getBlogEntrySort } from '@utils/content-utils'
+import { siteConfig } from '@/config';
+
+import type { GetStaticPaths } from 'astro';
+
+const pageTitle = `${siteConfig.title} - ${siteConfig.subTitle}`;
+const coverEnabled = siteConfig.cover.enabled;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const blogEntries = await getBlogEntrySort();
+  return paginate(blogEntries, { pageSize: siteConfig.pageSize})
+}) satisfies GetStaticPaths
+
+// 所有分页数据都在 "page" 参数中传递
+const { page } = Astro.props;
+
+---
+
+<MainPageLayout title={pageTitle}>
+    {coverEnabled && <Cover />}
+    <PostPage page={page} />
+    <Navi page={page} />
+</MainPageLayout>

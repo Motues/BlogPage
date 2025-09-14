@@ -2,17 +2,22 @@
 
 @layer base {
   :root {
-    --bg-color: #fcfcfc;
+    --bg-color: #f1f4f4;
     --text-color: #000000;
-    --navi-link-hover-bg-color: #eceef2;
+    --navi-link-hover-bg-color: #d4dfe2;
     --cover-subtitle-color: #999;
-
-
-    --footer-text-color: #000000;
+    --footer-text-color: #999;
     --link-color: #003b6e;
+    
+    
     --motto-text-color: #999;
     --border-color: gray;
     --image-shadow-color: rgba(0, 0, 0, 0.15);
+    
+    /* 滚动条颜色 */
+    --scrollbar-thumb: #c1c1c1;
+    --scrollbar-thumb-hover: #a8a8a8;
+    --scrollbar-track: #e1e1e1;
   }
 
   [data-theme="dark"] {
@@ -20,13 +25,18 @@
     --text-color: #ffffff;
     --navi-link-hover-bg-color: #1e293b;
     --cover-subtitle-color: #999;
-
-
-    --footer-text-color: #ffffff;
+    --footer-text-color: #999;
     --link-color: #57ace7;
+    
+    
     --motto-text-color: #c9d0d4;
     --border-color: gray;
     --image-shadow-color: rgba(59, 130, 246, 0.4);
+    
+    /* 滚动条颜色 */
+    --scrollbar-thumb: #4a5568;
+    --scrollbar-thumb-hover: #2d3748;
+    --scrollbar-track: #1a202c;
   }
 
 
@@ -34,6 +44,37 @@
     @apply bg-[--bg-color] text-[--text-color];
     font-family: "Noto Serif SC", "Times New Roman", "STZhongsong", serif;
     overflow-y: scroll;
+  }
+  
+  /* 滚动条样式 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+  
+  /* 选中文本样式 */
+  ::selection {
+    background-color: #acb7c0;
+    color: black;
+  }
+  
+  ::-moz-selection {
+    background-color: #acb7c0;
+    color: black;
   }
 
 }

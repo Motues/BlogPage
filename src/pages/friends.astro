@@ -1,0 +1,40 @@
+---
+import MainPageLayout from '@layouts/MainPageLayout.astro'
+import { siteConfig, friendLinkConfig } from '@/config'
+
+const pageTitle = "友链 - " + siteConfig.title;
+---
+
+<MainPageLayout title={pageTitle}>
+    <div class="mx-auto w-full max-w-[min(776px,90%)] py-8">
+        <div class="mb-8 text-center">
+            <h1 class="font-bold text-3xl mb-2">友链</h1>
+            <p class="font-bold text-gray-600">有趣的灵魂</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {
+                friendLinkConfig.map((friend) => (
+                    <a 
+                        href={friend.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="flex items-center p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+                    >
+                        <img 
+                            src={friend.avatar} 
+                            alt={friend.name} 
+                            class="w-16 h-16 rounded-full object-cover mr-4"
+                            onerror="this.src='https://www.gravatar.com/avatar/?d=mp'"
+                        />
+                        <div class="flex-1 min-w-0">
+                            <h2 class="font-bold text-lg truncate">{friend.name}</h2>
+                            <p class="text-gray-600 text-sm truncate">{friend.description}</p>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+        
+    </div>
+</MainPageLayout>

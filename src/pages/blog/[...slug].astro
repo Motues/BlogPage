@@ -7,14 +7,11 @@ import ImageModule from '@components/misc/ImageModule.astro'
 
 import { getCollection, render } from 'astro:content'
 
-import { url_blog_cover } from '@/utils/url-utils'
+import { blogCoverUrl, formatDateToChinese } from '@/utils/url-utils'
+import { getBlogEntrySort } from '@utils/content-utils'
 
 export async function getStaticPaths() {
-    const blogEntries = (await getCollection('blog', ({ data }) => {
-        return import.meta.env.PROD ? data.draft !== true : true
-    })).sort(
-        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-    );
+    const blogEntries = await getBlogEntrySort();
     return blogEntries.map(entry => ({
         params: { slug: entry.id }, // 在Astro5.0中，params.slug被弃用，改为params.id
         props: { entry },
@@ -26,14 +23,14 @@ const { entry } = Astro.props;
 const { Content, headings } = await render(entry); // 获取渲染后的正文内容
 
 const pageTitle = entry.data.title + ' - ' + siteConfig.title;
-const image = url_blog_cover(entry.data.image, entry.id);
+const image = blogCoverUrl(entry.data.image, entry.id);
 
 ---
 <MainPageLayout title={pageTitle}>
     <div class="mx-auto w-full max-w-[min(776px,90%)] py-8">
         <div class="mb-8 text-center">
             <h1 class="font-bold text-3xl mb-2 pt-10">{ entry.data.title }</h1>
-            <p class="font-bold text-gray-600 pt-4 pb-10">{ entry.data.pubDate.toLocaleDateString('en-CA') }</p>
+            <p class="font-bold text-gray-600 pt-4 pb-10">{ formatDateToChinese(entry.data.pubDate) }</p>
         </div>
         {image && (
             <div class="cover overflow-hidden">

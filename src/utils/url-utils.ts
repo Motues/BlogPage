@@ -4,7 +4,7 @@
  * @param blogName 博客文章的名称/ID，用于构建完整路径
  * @returns 相对于src目录的路径
  */
-export function url_blog_cover(contentPath: string, blogName: string): string {
+export function blogCoverUrl(contentPath: string, blogName: string): string {
     if (!contentPath) return '';
     
     // 处理相对路径 ./ 开头的情况
@@ -17,4 +17,18 @@ export function url_blog_cover(contentPath: string, blogName: string): string {
     
     // 构造相对于src目录的路径，包含博客名称文件夹
     return `content/blog/${blogName}/${normalizedPath}`;
+}
+
+/**
+ * 将日期转换为 YYYY年MM月DD日 格式
+ * @param date 需要格式化的日期
+ * @returns 格式化后的日期字符串，格式为 "YYYY年MM月DD日"
+ */
+export function formatDateToChinese(date: Date | string | number): string {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = (d.getMonth() + 1).toString()
+    const day = d.getDate().toString()
+    
+    return `${year}年${month}月${day}日`;
 }
