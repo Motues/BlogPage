@@ -57,5 +57,5 @@ export function parseMessages(content: string): Array<{time: string, content: st
     }
   }
   
-  return messages;
+  return messages.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime());
 }
