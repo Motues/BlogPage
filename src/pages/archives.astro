@@ -28,11 +28,11 @@ const pageTitle = "归档 - " + siteConfig.title;
 <MainPageLayout title={pageTitle}>
     <div class="archives mx-auto w-full max-w-[min(494px,90%)] py-8">
         <div class="mb-8 text-center">
-            <h1 class="font-bold text-3xl mb-2">文章归档</h1>
+            <h1 class="font-bold text-3xl mb-2 text-[var(--text-color)]">文章归档</h1>
             <p class="font-bold text-gray-600">共 {allBlogPosts.length} 篇文章</p>
         </div>
         
-        <div class="space-y-8">
+        <div class="space-y-8 text-[var(--text-color)]">
             {Object.keys(postsByYear).sort().reverse().map(year => (
                 <div>
                     <h2 class="text-3xl font-bold text-center mb-4">{year}</h2>
@@ -42,7 +42,7 @@ const pageTitle = "归档 - " + siteConfig.title;
                                 <span class="text-lg text-gray-500 mr-3 min-w-[150px]">
                                     {formatDateToChinese(post.data.pubDate)}
                                 </span>
-                                <a href={`/blog/${post.id}`} class="text-lg font-bold hover:text-blue-600 transition-colors">
+                                <a href={`/blog/${post.id}`} class="text-lg font-bold hover:text-[var(--link-color)] transition-colors">
                                     {post.data.title}
                                 </a>
                             </li>
