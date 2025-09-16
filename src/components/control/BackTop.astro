@@ -5,11 +5,11 @@ import { Icon } from "astro-icon/components";
 <button id="backTop" title="回到顶部" class="fixed bottom-[4vh] right-[4vw] w-12 h-12 rounded-full bg-[--bg-color] cursor-pointer flex items-center justify-center z-[1000] transition-all duration-300 opacity-90 border-0 hover:scale-110 hover:shadow-[0_4px_15px_rgba(59,130,246,0.4)] hidden">
   <!-- 圆形进度条 -->
   <svg class="absolute top-0 left-0 w-full h-full -rotate-90" viewBox="0 0 48 48">
-    <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(156, 163, 175, 0.3)" stroke-width="2"></circle>
+    <circle id="circle" cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2"></circle>
     <circle id="progress-circle" cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="0 125.6" stroke-linecap="round"></circle>
   </svg>
   <!-- 向上的图标 -->
-  <Icon name="fa6-solid:arrow-up" class="relative z-10 text-lg" />
+  <Icon name="fa6-solid:arrow-up" class="relative z-10 text-lg text-[var(--text-color)]" />
 </button>
 
 <script is:inline>
@@ -56,10 +56,14 @@ handleScroll();
 
 <style is:global>
   #backTop {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px var(--shadow-color);
   }
-  
-  [data-theme="dark"] #backTop {
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+
+  #progress-circle {
+    stroke: var(--text-color);
+  }
+
+  #circle {
+    stroke: var(--button-border-color);
   }
 </style>

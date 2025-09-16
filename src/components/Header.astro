@@ -8,55 +8,47 @@ const indexPage = profileConfig.indexPage
 ---
 
 <!-- header -->
-<div class="flex justify-between items-center py-4 max-w-[min(1024px,95%)] mx-auto text-[var(--text-color)]">
+<div class="flex items-center p-4 text-[var(--text-color)] max-w-[min(1024px,90vw)] mx-auto">
     <!-- logo -->
-    <div>
+    <div class="px-4 py-2 font-bold z-30">
         <a href="/" >
             <span class="text-lg font-bold hover:opacity-60 transition-opacity">{ siteConfig.title }</span>
         </a>
     </div>
-    
     <!-- nav_bar -->
-    <div class="flex-grow flex justify-center">
-        <div class="hidden md:flex space-x-0 text-lg font-bold">
-            <a href="/archives" class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">归档</a>
-            <a href="/message"  class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">备忘录</a>
-            <a href="/about" class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">关于</a>
-            <a href="/friends"  class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">友链</a>
-            <!-- <a href={ indexPage } target="_blank" class="hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg px-3 py-2 hover:text-current">主页</a> -->
+    <div id="nav-bar" class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 justify-center items-center text-lg font-bold">
+        <div id="nav-bar-list" class="transition relative z-10 flex max-w-max flex-1 items-center justify-center rounded-outer p-2 backdrop-blur-md rounded-xl bg-[color:var(--bg-color)]/30">
+            <a href="/archives" class="transition-colors hover:bg-[var(--button-hover-color)] rounded-lg px-3 py-1 mx-1 hover:text-current">归档</a>
+            <a href="/message"  class="transition-colors hover:bg-[var(--button-hover-color)] rounded-lg px-3 py-1 mx-1 hover:text-current">备忘录</a>
+            <a href="/about" class="transition-colors hover:bg-[var(--button-hover-color)] rounded-lg px-3 py-1 mx-1 hover:text-current">关于</a>
+            <a href="/friends"  class="transition-colors hover:bg-[var(--button-hover-color)] rounded-lg px-3 py-1 mx-1 hover:text-current">友链</a>
+            <!-- <a href={ indexPage } target="_blank" class="hover:bg-[var(--button-hover-color)] rounded-lg px-3 py-2 hover:text-current">主页</a> -->
         </div>
     </div>
     
-    <!-- 右侧功能区 -->
-    <div class="flex items-center space-x-2">
-        <!-- RSS 图标在小屏幕上也显示 -->
-        <a href="/rss.xml" target="_blank" class="flex items-center justify-center w-10 h-10 hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg hover:text-current">
-            <Icon name="simple-icons:rss" class="w-5 h-5" />
+    <!-- tools -->
+    <div class="ml-auto flex gap-2 px-4 py-2 justify-end z-30">
+        <!-- RSS -->
+        <a href="/rss.xml" target="_blank" class="flex items-center justify-center w-10 h-10 hover:bg-[var(--button-hover-color)] rounded-lg hover:text-current border border-[var(--button-border-color)]">
+            <Icon name="simple-icons:rss" class="w-4 h-4" />
         </a>
-        <!-- 语言切换占位符
-        <div class="flex items-center justify-center w-10 h-10 hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg cursor-pointer">
-            <Icon name="fa6-solid:language" class="w-5 h-5" />
-        </div> -->
-        
-        <!-- 黑白模式切换占位符 -->
-        <ThemeIcon/>
-        
-        <!-- 移动端菜单按钮 -->
-            <button id="mobile-menu-button" class="focus:outline-none md:hidden flex items-center justify-center w-10 h-10 hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg cursor-pointer">
-                <Icon name="fa6-solid:align-justify" class="w-5 h-5" />
-            </button>
+        <!-- Dark Mode -->
+        <ThemeIcon class="flex items-center justify-center w-10 h-10 hover:bg-[var(--button-hover-color)] rounded-lg hover:text-current border border-[var(--button-border-color)]"/>
+        <!-- Mobile Menu -->
+        <button id="mobile-menu-button" class="focus:outline-none md:hidden flex items-center justify-center w-10 h-10 hover:bg-[var(--button-hover-color)] rounded-lg cursor-pointer  border border-[var(--button-border-color)]">
+            <Icon name="fa6-solid:align-justify" class="w-5 h-5" />
+        </button>
     </div>
 </div>
 
-<!-- 移动端菜单 -->
+<!-- Mobile Menu -->
 <div id="mobile-menu" class="md:hidden hidden fixed top-16 left-0 w-full bg-white shadow-lg z-50">
     <div class="flex flex-col py-2">
-
-        <a href="/archives"  class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">归档</a>
-        <a href="/message"  class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">备忘录</a>
-        <a href="/about"  class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">关于</a>
-        <a href="/friends"  class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">友链</a>
-        <!-- <a href={ indexPage } target="_blank" class="px-6 py-3 hover:bg-[var(--navi-link-hover-bg-color)]">主页</a> -->
+        <a href="/archives"  class="px-6 py-3 hover:bg-[var(--button-hover-color)]">归档</a>
+        <a href="/message"  class="px-6 py-3 hover:bg-[var(--button-hover-color)]">备忘录</a>
+        <a href="/about"  class="px-6 py-3 hover:bg-[var(--button-hover-color)]">关于</a>
+        <a href="/friends"  class="px-6 py-3 hover:bg-[var(--button-hover-color)]">友链</a>
+        <!-- <a href={ indexPage } target="_blank" class="px-6 py-3 hover:bg-[var(--button-hover-color)]">主页</a> -->
     </div>
 </div>
 
@@ -64,6 +56,9 @@ const indexPage = profileConfig.indexPage
     document.addEventListener('DOMContentLoaded', () => {
         const menuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const navBar = document.getElementById('nav-bar');
+        const navBarList = document.getElementById('nav-bar-list');
+        
         
         if (menuButton && mobileMenu) {
             menuButton.addEventListener('click', () => {
@@ -77,5 +72,21 @@ const indexPage = profileConfig.indexPage
                 }
             });
         }
+        
+        // 监听滚动事件
+        let isFixed = false;
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 0 && !isFixed && navBar && navBarList) {
+                // 页面不在顶部，添加fixed类
+                navBar.classList.add('fixed', 'top-4', 'z-20',);
+                navBarList.classList.add('border' ,'border-[var(--button-border-color)]', 'shadow-[0_4px_12px_var(--shadow-color)]');
+                isFixed = true;
+            } else if (window.scrollY === 0 && isFixed && navBar && navBarList) {
+                // 页面回到顶部，移除fixed类
+                navBar.classList.remove('fixed', 'top-4', 'z-20', );
+                navBarList.classList.remove('border' ,'border-[var(--button-border-color)]','shadow-[0_4px_12px_var(--shadow-color)]');
+                isFixed = false;
+            }
+        });
     });
 </script>

@@ -1,16 +1,14 @@
 ---
 import MainPageLayout from '@layouts/MainPageLayout.astro'
 import { siteConfig, friendLinkConfig } from '@/config'
+import Cover from '@components/Cover.astro';
 
 const pageTitle = "友链 - " + siteConfig.title;
 ---
 
 <MainPageLayout title={pageTitle}>
-    <div class="mx-auto w-full max-w-[min(776px,90%)] py-8">
-        <div class="mb-8 text-center">
-            <h1 class="font-bold text-3xl mb-2 text-[var(--text-color)]">友链</h1>
-            <p class="font-bold text-gray-600">有趣的灵魂</p>
-        </div>
+    <div class="mx-auto w-full max-w-[min(776px,90%)]">
+        <Cover title='友链' subTitle='有趣的灵魂'/>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-[var(--text-color)]">
             {
@@ -19,7 +17,7 @@ const pageTitle = "友链 - " + siteConfig.title;
                         href={friend.url} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        class="flex items-center p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+                        class="flex items-center p-4 border border-[var(--button-border-color)] rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
                     >
                         <img 
                             src={friend.avatar} 
@@ -29,7 +27,7 @@ const pageTitle = "友链 - " + siteConfig.title;
                         />
                         <div class="flex-1 min-w-0">
                             <h2 class="font-bold text-lg truncate">{friend.name}</h2>
-                            <p class="text-gray-600 text-sm">{friend.description}</p>
+                            <p class="text-[var(--text-color)]/60 text-sm">{friend.description}</p>
                         </div>
                     </a>
                 ))

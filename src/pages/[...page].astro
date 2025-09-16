@@ -21,10 +21,11 @@ export const getStaticPaths = (async ({ paginate }) => {
 // 所有分页数据都在 "page" 参数中传递
 const { page } = Astro.props;
 
+
 ---
 
 <MainPageLayout title={pageTitle}>
-    {coverEnabled && <Cover />}
+    {coverEnabled && <Cover title={siteConfig.cover.title} subTitle={siteConfig.cover.subTitle} />}
     <PostPage page={page} />
     <Navi page={page} />
     <BackTop />

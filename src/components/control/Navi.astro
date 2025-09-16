@@ -16,7 +16,7 @@ const nextPageUrl = `/${currentPage + 1}/`;
   <div class="prev-page w-28">
     {
       showPrevious ? (
-        <a href={previousPageUrl} class="px-4 py-2 bg-gray-100 hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg transition-colors duration-200 flex items-center justify-center">
+        <a href={previousPageUrl} class="px-4 py-2 text-[var(--text-color)] hover:bg-[var(--button-hover-color)] border border-[var(--button-border-color)] rounded-lg transition-colors duration-200 flex items-center justify-center">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
           </svg>
@@ -28,14 +28,14 @@ const nextPageUrl = `/${currentPage + 1}/`;
     }
   </div>
 
-  <div class="page-info text-gray-600">
+  <div class="page-info text-[var(--text-color)]/60">
     第 {currentPage} 页，共 {totalPages} 页
   </div>
 
   <div class="next-page w-28">
     {
       showNext ? (
-        <a href={nextPageUrl} class="px-4 py-2 bg-gray-100 hover:bg-[var(--navi-link-hover-bg-color)] rounded-lg transition-colors duration-200 flex items-center justify-center">
+        <a href={nextPageUrl} class="px-4 py-2 text-[var(--text-color)] hover:bg-[var(--button-hover-color)] border border-[var(--button-border-color)] rounded-lg transition-colors duration-200 flex items-center justify-center">
           下一页
           <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

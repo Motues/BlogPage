@@ -1,6 +1,7 @@
 ---
 import MainPageLayout from '@layouts/MainPageLayout.astro'
 import Markdown from '@components/misc/Markdown.astro'
+import Cover from '@components/Cover.astro'
 
 import { siteConfig } from '@/config'
 
@@ -16,11 +17,8 @@ const { Content } = await render(aboutPost);
 const pageTitle = "关于 - " + siteConfig.title;
 ---
 <MainPageLayout title={pageTitle}>
-    <div class="mx-auto w-full max-w-[min(776px,90%)] py-8">
-        <div class="mb-8 text-center">
-            <h1 class="font-bold text-3xl mb-2 text-[var(--text-color)]">关于我</h1>
-            <p class="font-bold text-gray-600">Like River!</p>
-        </div>
+    <div class="mx-auto w-full max-w-[min(776px,90%)]">
+        <Cover title='关于我' subTitle='Like River!'/>
         <Markdown class="mb-6 markdown-content onload-animation">
             <Content />
         </Markdown>

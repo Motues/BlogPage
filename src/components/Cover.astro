@@ -1,11 +1,16 @@
 ---
 import "@styles/global.css"
 
-import { siteConfig } from "@/config";
+interface Props {
+    title?: string;
+    subTitle?: string;
+}
+
+const { title, subTitle } = Astro.props;
 ---
 
 <!-- Cover -->
-<div class="text-center py-10">
-    <p class="text-[var(--text-color)] text-4xl py-5 font-bold">{ siteConfig.cover.title }</p>
-    <p class="text-[var(--cover-subtitle-color)] text-xl">{ siteConfig.cover.subTitle }</p>
+<div class="text-center pt-5 pb-10">
+    { title && <p class="text-[var(--text-color)] text-3xl py-5 font-bold">{ title }</p> }
+    { subTitle && <p class="text-[var(--cover-subtitle-color)]">{ subTitle }</p> }
 </div>

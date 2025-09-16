@@ -1,6 +1,6 @@
 ---
 import MainPageLayout from '@layouts/MainPageLayout.astro'
-import Markdown from '@components/misc/Markdown.astro'
+import Cover from '@components/Cover.astro'
 
 import { siteConfig } from '@/config'
 import { formatDateToChinese } from '@utils/url-utils'
@@ -26,23 +26,20 @@ const pageTitle = "归档 - " + siteConfig.title;
 ---
 
 <MainPageLayout title={pageTitle}>
-    <div class="archives mx-auto w-full max-w-[min(494px,90%)] py-8">
-        <div class="mb-8 text-center">
-            <h1 class="font-bold text-3xl mb-2 text-[var(--text-color)]">文章归档</h1>
-            <p class="font-bold text-gray-600">共 {allBlogPosts.length} 篇文章</p>
-        </div>
+    <div class="archives mx-auto w-full max-w-[min(494px,90%)]">
+        <Cover title='文章归档' subTitle=`共 ${allBlogPosts.length} 篇文章`/>
         
-        <div class="space-y-8 text-[var(--text-color)]">
+        <div class="space-y-8">
             {Object.keys(postsByYear).sort().reverse().map(year => (
                 <div>
-                    <h2 class="text-3xl font-bold text-center mb-4">{year}</h2>
+                    <h2 class="text-3xl text-[var(--text-color)] font-bold text-center mb-4">{year}</h2>
                     <ul class="space-y-2">
                         {postsByYear[Number(year)].map(post => (
                             <li class="flex items-center">
-                                <span class="text-lg text-gray-500 mr-3 min-w-[150px]">
+                                <span class="text-lg text-[var(--text-color)]/60 mr-3 min-w-[150px]">
                                     {formatDateToChinese(post.data.pubDate)}
                                 </span>
-                                <a href={`/blog/${post.id}`} class="text-lg font-bold hover:text-[var(--link-color)] transition-colors">
+                                <a href={`/blog/${post.id}`} class="text-lg font-bold text-[var(--text-color)] hover:text-[var(--link-color)] transition-colors">
                                     {post.data.title}
                                 </a>
                             </li>
@@ -56,7 +53,6 @@ const pageTitle = "归档 - " + siteConfig.title;
 
 <style>
    .archives a {
-        color: inherit;
         /* transition: color 0.3s ease; */
         text-decoration: none;
         position: relative;

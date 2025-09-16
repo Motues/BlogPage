@@ -2,16 +2,16 @@
 
 @layer base {
   :root {
-    --bg-color: #f1f4f4;
+    --bg-color: #ffffff;
     --text-color: #000000;
-    --navi-link-hover-bg-color: #d4dfe2;
+    --shadow-color: rgba(0, 0, 0, 0.15);
     --cover-subtitle-color: #999;
     --footer-text-color: #999;
     --link-color: #003b6e;
+    --button-hover-color: #f5f5f5;
+    --button-border-color: #e5e5e5;
+    --postcard-bg-color: #fafafa;
     
-    
-    --motto-text-color: #999;
-    --border-color: gray;
     --image-shadow-color: rgba(0, 0, 0, 0.15);
     
     /* 滚动条颜色 */
@@ -21,16 +21,17 @@
   }
 
   [data-theme="dark"] {
-    --bg-color: #031116;
+    --bg-color: #0a0a0a;
     --text-color: #ffffff;
-    --navi-link-hover-bg-color: #1e293b;
+    --shadow-color: rgba(255, 255, 255, 0.15);
     --cover-subtitle-color: #999;
     --footer-text-color: #999;
     --link-color: #57ace7;
+    --button-hover-color: #262626;
+    --button-border-color: #262626;
+    --postcard-bg-color: #242526;
     
     
-    --motto-text-color: #c9d0d4;
-    --border-color: gray;
     --image-shadow-color: rgba(59, 130, 246, 0.4);
     
     /* 滚动条颜色 */

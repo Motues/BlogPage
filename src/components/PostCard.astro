@@ -15,15 +15,15 @@ const { title, description, image, pubDate, url } = Astro.props;
 const pageUrl = "/blog/" + url;
 ---
 
-<a href={pageUrl} class="block min-w-0 w-full max-w-[min(776px,90vw)] mx-auto my-6 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<a href={pageUrl} class="block min-w-0 w-full max-w-[min(776px,90vw)] mx-auto my-6 bg-[var(--postcard-bg-color)] rounded-xl shadow-[0_4px_6px_var(--shadow-color)] border border-[var(--button-border-color)] overflow-hidden transition-all duration-300 hover:shadow-[0_6px_14px_var(--shadow-color)] hover:-translate-y-1">
     {image && (
         <div class="cover h-60 overflow-hidden">
             <ImageModule src={image} alt={title} class="w-full h-full object-cover"/>
         </div>
     )}
     <div class="content p-6">
-        <h2 class="title text-xl font-semibold text-gray-900 mb-3">{title}</h2>
-        <p class="description text-gray-600 leading-relaxed">{description}</p>
-        <p class="pubdate text-sm text-gray-400 mt-4">{pubDate}</p>
+        <h2 class="title text-xl font-semibold text-[var(--text-color)] mb-3">{title}</h2>
+        <p class="description text-[var(--text-color)]/40 leading-relaxed">{description}</p>
+        <p class="pubdate text-sm text-[var(--text-color)]/70 mt-4">{pubDate}</p>
     </div>
 </a>
