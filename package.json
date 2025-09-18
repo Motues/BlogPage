@@ -13,11 +13,15 @@
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.7",
     "astro-icon": "^1.1.5",
+    "hastscript": "^9.0.1",
     "katex": "^0.16.22",
+    "rehype-components": "^0.3.0",
     "rehype-katex": "^7.0.1",
+    "remark-directive": "^4.0.0",
     "remark-math": "^6.0.0",
     "sharp": "^0.34.3",
-    "tailwindcss": "^4.1.13"
+    "tailwindcss": "^4.1.13",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@iconify-json/fa6-brands": "^1.2.6",
