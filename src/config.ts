@@ -1,6 +1,7 @@
 import type {
     SiteConfig,
-    ProfileConfig
+    ProfileConfig,
+    LicenseConfig
 } from "./types/config"
 
 import type { FriendLink } from "./types/friend"
@@ -80,6 +81,12 @@ export const profileConfig: ProfileConfig = {
         },
     ]
 }
+
+export const licenseConfig: LicenseConfig = {
+	enable: false,
+	name: "CC BY-NC-SA 4.0",
+	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+};
 
 export const friendLinkConfig: FriendLink[] = [
   {

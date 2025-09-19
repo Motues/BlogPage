@@ -1,11 +1,12 @@
 ---
 import '@styles/global.css'
-import { siteConfig } from '@/config'
+import { siteConfig, licenseConfig, profileConfig } from '@/config'
 import MainPageLayout from '@layouts/MainPageLayout.astro'
 import Markdown from '@components/misc/Markdown.astro'
 import ImageModule from '@components/misc/ImageModule.astro'
 import BackTop from '@components/control/BackTop.astro'
 import TOC from '@components/TOC.astro'
+import LicenseCard from '@components/misc/LicenseCard.astro'
 
 import { getCollection, render } from 'astro:content'
 
@@ -42,6 +43,9 @@ const image = blogCoverUrl(entry.data.image, entry.id);
         <Markdown class="mb-6 markdown-content onload-animation">
             <Content />
         </Markdown>
+        {licenseConfig.enable &&
+        <LicenseCard author={profileConfig.name} url={Astro.url} license={licenseConfig} />
+        }
     </div>
     <TOC headings={headings}/>
     <BackTop />
