@@ -17,7 +17,7 @@ const pageTitle = "备忘录 - " + siteConfig.title;
 
 <MainPageLayout title={pageTitle}>
     
-    <div class="mx-auto w-full max-w-[min(776px,90%)]">
+    <div class="mx-auto w-full max-w-[var(--page-width)]">
         <Cover title="备忘录" subTitle='一些琐碎的事情'/>
         <MessageCard messages={messages} />
     </div>

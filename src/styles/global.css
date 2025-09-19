@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./variables.css";
 
 @layer base {
   :root {
@@ -18,6 +19,8 @@
     --scrollbar-thumb: #c1c1c1;
     --scrollbar-thumb-hover: #a8a8a8;
     --scrollbar-track: #e1e1e1;
+
+    --page-width: min(776px,90%);
   }
 
   [data-theme="dark"] {

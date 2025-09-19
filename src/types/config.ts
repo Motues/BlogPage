@@ -11,6 +11,10 @@ export type SiteConfig = {
     favicon: string;
 
     pageSize: number;
+    toc: {
+        enabled: boolean;
+        depth: number;
+    }
 }
 
 export type ProfileConfig = {

@@ -1,8 +1,10 @@
 ---
+import '@fontsource-variable/jetbrains-mono'
+import '@fontsource-variable/jetbrains-mono/wght-italic.css'
 import '@styles/alert.css'
 
 interface Props {
-  class: string
+  class?: string
 }
 const className = Astro.props.class
 ---
@@ -20,7 +22,7 @@ const className = Astro.props.class
   font-size: 2rem;
   font-weight: 700;
   margin: 2rem 0 1rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--text-color);
 }
 
 .markdown-content h2 {
@@ -28,7 +30,7 @@ const className = Astro.props.class
   font-size: 1.75rem;
   font-weight: 700;
   margin: 1.8rem 0 1rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--text-color);
 }
 
 .markdown-content h3 {
@@ -127,7 +129,7 @@ const className = Astro.props.class
 .markdown-content blockquote {
   margin: 1.5rem 0;
   padding: 0.1rem 1.2rem;
-  border-left: 4px solid var(--border-color);
+  border-left: 4px solid var(--text-color);
   background-color: rgba(0, 0, 0, 0.03);
   color: #666;
 }
@@ -137,15 +139,15 @@ const className = Astro.props.class
   color: #aaa;
 }
 
-.markdown-content code {
+.markdown-content p code {
   padding: 0.2rem 0.4rem;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono Variable', ui-monospace;
   font-size: 0.9em;
 }
 
-[data-theme="dark"] .markdown-content code {
+[data-theme="dark"] .markdown-content p code {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -155,7 +157,7 @@ const className = Astro.props.class
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 6px;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono Variable', ui-monospace;
   line-height: 1.5;
 }
 
@@ -204,5 +206,12 @@ const className = Astro.props.class
   display: block;
   border-radius: 6px;
   box-shadow: 0 2px 8px var(--image-shadow-color);
+}
+
+.markdown-content hr {
+  margin: 2rem 0;
+  border: none;
+  height: 1px;
+  background: var(--text-color);
 }
 </style>
