@@ -1,0 +1,174 @@
+---
+---
+<div id="search-modal" class="fixed inset-0 z-[100] opacity-0 pointer-events-none">
+  <div class="absolute inset-0 modal-backdrop opacity-0" aria-hidden="true"></div>
+
+  <div class="fixed inset-0 flex items-center justify-center p-4 top-[-33%]">
+    <div class="search-modal-content bg-[var(--bg-color)] rounded-xl shadow-xl w-full max-w-2xl border border-[var(--button-border-color)] overflow-hidden scale-95">
+      <div class="flex items-center p-4 border-b border-[var(--button-border-color)]">
+        <svg class="w-5 h-5 text-[var(--cover-subtitle-color)] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <input 
+          type="text" 
+          id="search-input"
+          placeholder="输入关键词进行搜索..."
+          class="w-full bg-transparent border-0 focus:ring-0 focus:outline-none text-lg text-[var(--text-color)]"
+          autofocus
+        />
+        <button id="close-search" class="ml-2 p-2 text-[var(--cover-subtitle-color)] rounded-lg hover:bg-[var(--button-hover-color)]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="search-results" class="max-h-[60vh] overflow-y-auto">
+        <div class="p-8 text-center text-[var(--cover-subtitle-color)]">
+          <p>输入关键词开始搜索</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchButton = document.getElementById('search-button');
+    const searchModal = document.getElementById('search-modal');
+    const closeSearch = document.getElementById('close-search');
+    const searchInput = document.getElementById('search-input');
+    const modalBackdrop = searchModal?.firstElementChild;
+    const modalContent = searchModal?.querySelector('.search-modal-content');
+    
+    // 打开搜索模态框
+    if (searchButton) {
+      searchButton.addEventListener('click', () => {
+        // 显示模态框
+        searchModal?.classList.remove('opacity-0', 'pointer-events-none');
+        
+        // 强制重绘以确保动画流畅
+        searchModal?.offsetHeight;
+        
+        // 渐变显示背景和内容
+        requestAnimationFrame(() => {
+          if (modalBackdrop) {
+            modalBackdrop.classList.remove('opacity-0');
+            modalBackdrop.classList.add('show');
+          }
+          
+          // 缩放内容
+          if (modalContent) {
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+            modalContent.style.opacity = '1';
+          }
+        });
+        
+        // 聚焦到搜索输入框
+        setTimeout(() => {
+          searchInput?.focus();
+        }, 300);
+      });
+    }
+    
+    // 关闭搜索模态框
+    const closeSearchModal = () => {
+      // 渐变隐藏背景和内容
+      requestAnimationFrame(() => {
+        if (modalBackdrop) {
+          modalBackdrop.classList.add('opacity-0');
+          modalBackdrop.classList.remove('show');
+        }
+        
+        // 缩放内容
+        if (modalContent) {
+          modalContent.classList.add('scale-95');
+          modalContent.classList.remove('scale-100');
+          modalContent.style.opacity = '0';
+        }
+      });
+
+      // 延迟隐藏模态框，让动画有时间完成
+      setTimeout(() => {
+        searchModal?.classList.add('opacity-0', 'pointer-events-none');
+      }, 300);
+    };
+    
+    // 点击关闭按钮
+    closeSearch?.addEventListener('click', closeSearchModal);
+    
+    // 点击背景关闭
+    searchModal?.addEventListener('click', (e) => {
+      if (!modalContent?.contains(e.target)) {
+        closeSearchModal();
+      }
+    });
+    
+    // ESC键关闭
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !searchModal?.classList.contains('opacity-0')) {
+        closeSearchModal();
+      }
+    });
+  });
+</script>
+
+<style>
+  @keyframes backdropFadeIn {
+    0% {
+      opacity: 0;
+      backdrop-filter: blur(0px);
+    }
+    100% {
+      opacity: 1;
+      backdrop-filter: blur(4px);
+    }
+  }
+  
+  @keyframes backdropFadeOut {
+    0% {
+      opacity: 1;
+      backdrop-filter: blur(4px);
+    }
+    100% {
+      opacity: 0;
+      backdrop-filter: blur(0px);
+    }
+  }
+  
+  .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(0px);
+    transition: opacity 0.3s ease-out;
+  }
+  
+  .modal-backdrop.show {
+    animation: backdropFadeIn 0.3s ease-out forwards;
+  }
+  
+  .modal-backdrop:not(.show) {
+    animation: backdropFadeOut 0.3s ease-out forwards;
+  }
+  
+  .search-modal-content {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+  }
+  
+  #search-input::-webkit-input-placeholder {
+    color: var(--cover-subtitle-color);
+  }
+  
+  #search-input::-moz-placeholder {
+    color: var(--cover-subtitle-color);
+  }
+
+  /* 添加针对缩放类的过渡 */
+  .scale-95 {
+    transform: scale(0.95);
+  }
+  
+  .scale-100 {
+    transform: scale(1);
+  }
+</style>
