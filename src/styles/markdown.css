@@ -1,0 +1,10 @@
+
+
+/* 颜色变量 */
+:root {
+    --quote-left-color: #dadde1;
+  }
+
+[data-theme="dark"] {
+    --quote-left-color: #606770;
+}

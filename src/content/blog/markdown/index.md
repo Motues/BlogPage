@@ -117,7 +117,7 @@ draft: true
 
 ### 代码
 
-将单词或者短语用勾号``括起来表示为代码。
+将单词或者短语用勾号\`括起来表示为代码。
 
 ```
 在C++中，使用`cout`打印Hello World!
@@ -144,7 +144,7 @@ int main() {
 
 结果如下所示
 
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 
