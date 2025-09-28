@@ -27,13 +27,6 @@ draft: true
     E=mc^2
     $$
 
-## GitHub仓库卡片
-本网站可以显示一个GitHub仓库的卡片，代码和效果如下所示。
-```markdown
-::github{repo="Motues/GMS"}
-```
-::github{repo="Motues/GMS"}
-
 ## 提示卡片
 可以使用`:::note`、`:::tip`、`:::warning`、`:::important`、`:::caution`等标签来显示提示卡片，代码和效果如下所示。
 ```markdown
@@ -41,17 +34,17 @@ draft: true
 这是一个提示。
 :::
 ```
-:::note[提示]
+:::note[这是一个提示]
 这是一个提示。
 :::
 :::tip
 这是一个建议。
 :::
-:::warning
-这是一个警告。
-:::
 :::important
 这是一个重要事项。
+:::
+:::warning
+这是一个警告。
 :::
 :::caution
 这是一个注意事项。

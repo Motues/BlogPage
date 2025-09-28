@@ -22,7 +22,7 @@ export type ProfileConfig = {
     name: string;
     description: string;
     indexPage?: string;
-    links: {
+    links?: {
         name: string;
         url: string;
         icon: string;
