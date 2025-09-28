@@ -23,6 +23,14 @@ export function blogCoverUrl(contentPath: string, blogName: string): string {
     return `content/blog/${blogFolder}/${normalizedPath}`;
 }
 
+function joinUrl(...parts: string[]): string {
+	const joined = parts.join("/");
+	return joined.replace(/\/+/g, "/");
+}
+export function baseUrl(path: string) {
+	return joinUrl("", import.meta.env.BASE_URL, path);
+}
+
 /**
  * 将日期转换为 YYYY年MM月DD日 格式
  * @param date 需要格式化的日期

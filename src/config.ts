@@ -18,7 +18,7 @@ export const siteConfig: SiteConfig = {
 
     favicon: "/favicon/favicon.ico", // Path of the favicon, relative to the /public directory
 
-    pageSize: 4, // Number of posts per page
+    pageSize: 6, // Number of posts per page
     toc: {
         enabled: true,
         depth: 3 // Max depth of the table of contents, between 1 and 4
